@@ -1,1 +1,6 @@
 secrets.yml
+bin/
+lib/
+lib64
+pyvenv.cfg
+modules/__pycache__/
