@@ -52,7 +52,7 @@ def debug_login():
     return get('/api/v1/me/', access_token=access_token).json(), access_token
 
 
-if __name__ == '__main__':
+def main():
     # user, access_token = login()
     user, access_token = debug_login()
     if access_token == 0:

@@ -14,4 +14,7 @@ setup(name='ogs_cli',
         'getpass',
         'yaml'
       ],
+      entry_points = {
+          'console_scripts': ['ogs=ogs_cli.cli:main']
+      },
       zip_safe=False)
