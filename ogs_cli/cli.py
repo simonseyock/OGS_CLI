@@ -5,6 +5,7 @@ from .game import *
 from .request_handler import *
 from .overview import *
 import sys
+from colorama import init
 
 
 ### API DOCS = https://ogs.docs.apiary.io/
@@ -53,6 +54,7 @@ def debug_login():
 
 
 def main():
+    init()
     # user, access_token = login()
     user, access_token = debug_login()
     if access_token == 0:
