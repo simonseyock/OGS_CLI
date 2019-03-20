@@ -8,4 +8,10 @@ setup(name='ogs_cli',
       author_email='milan.kroemer@pm.me, simonseyock@gmail.com',
       license='MIT',
       packages=['ogs_cli'],
+      install_requires=[
+        'sty',
+        'requests',
+        'getpass',
+        'yaml'
+      ],
       zip_safe=False)
