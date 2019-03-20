@@ -11,7 +11,8 @@ setup(name='ogs_cli',
       install_requires=[
         'colorama',
         'requests',
-        'pyyaml'  
+        'pyyaml',
+        'sgfmill'
       ],
       entry_points = {
           'console_scripts': ['ogs=ogs_cli.cli:main']

@@ -57,6 +57,9 @@ def main():
     user, access_token = debug_login()
     if access_token == 0:
         sys.exit()
-    game_id, game_details = choose_first_game(user, access_token)
-    sgf = get_sgf(game_id, access_token)
+    game = choose_first_game(user, access_token)
+    sgf = print_sgf(game, access_token)
     print(sgf)
+
+if __name__ == '__main__':
+    main()
