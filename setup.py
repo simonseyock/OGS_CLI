@@ -9,10 +9,9 @@ setup(name='ogs_cli',
       license='MIT',
       packages=['ogs_cli'],
       install_requires=[
-        'sty',
+        'colorama',
         'requests',
-        'getpass',
-        'yaml'
+        'pyyaml'  
       ],
       entry_points = {
           'console_scripts': ['ogs=ogs_cli.cli:main']

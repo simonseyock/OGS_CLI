@@ -1,4 +1,4 @@
-from request_handler import *
+from .request_handler import *
 
 
 def get_games(user, access_token):

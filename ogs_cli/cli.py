@@ -1,21 +1,21 @@
 import requests
 import yaml
 import getpass
-from game import *
-from request_handler import *
-from overview import *
+from .game import *
+from .request_handler import *
+from .overview import *
 import sys
 
 
 ### API DOCS = https://ogs.docs.apiary.io/
 
-with open('../secrets.yml', 'r') as stream:
+with open('secrets.yml', 'r') as stream:
     try:
         secrets = yaml.load(stream)
     except yaml.YAMLError as exc:
         print(exc)
 
-with open('../config.yml', 'r') as stream:
+with open('config.yml', 'r') as stream:
     try:
         config = yaml.load(stream)
     except yaml.YAMLError as exc:

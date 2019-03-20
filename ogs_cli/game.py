@@ -1,4 +1,4 @@
-from request_handler import *
+from .request_handler import *
 
 
 def get_sgf(game_id, access_token):
