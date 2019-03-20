@@ -1,4 +1,4 @@
-from .request_handler import *
+from request_handler import *
 
 
 def get_games(user, access_token):
@@ -40,5 +40,5 @@ def choose_game(user, access_token):
 ### for debugging
 def choose_first_game(user, access_token):
     games, game_details = get_games(user, access_token)
-    key = 1
+    key = 2
     return games[key - 1]['related']['detail'], game_details[key - 1]
