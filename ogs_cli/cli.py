@@ -5,7 +5,7 @@ from .game import *
 from .request_handler import *
 from .overview import *
 import sys
-from colorama import init
+import colorama
 
 
 ### API DOCS = https://ogs.docs.apiary.io/
@@ -53,15 +53,56 @@ def debug_login():
     return get('/api/v1/me/', access_token=access_token).json(), access_token
 
 
+def choose_option(num_options):
+    while True:
+        key = input("Choose option: ")
+        try:
+            key = int(key)
+            if key > num_options or key < 1:
+                print('invalid option, try again: ')
+            else:
+                return key
+        except ValueError:
+            print('invalid option, try again: ')
+
+
+def choose_from_game_options(user, game):
+    num_options = 1
+    print('Actions:\n'
+          '1) Back to selection')
+    if is_user_to_move(user, game):
+        print('2) Make move')
+        num_options = 2
+    return choose_option(num_options)
+
+        
+
 def main():
-    init()
+    colorama.init()
+    print('Press Ctrl+C to quit.')
     # user, access_token = login()
     user, access_token = debug_login()
     if access_token == 0:
         sys.exit()
-    game = choose_first_game(user, access_token)
-    sgf = print_sgf(game, access_token)
-    print(sgf)
+
+    while True:
+        # game = choose_game(user, access_token)
+        game_details = get_game_details(user, access_token)
+        print_overview(user, game_details)
+
+        key = choose_option(len(game_details))
+
+        game = game_details[key-1]
+
+        board = get_board_from_sgf(game, access_token)
+        print_board(board)
+    
+        key = choose_from_game_options(user, game)
+        if key == 2:
+            move = make_move(board, user, game)
+            print_board(board)
+        
 
 if __name__ == '__main__':
     main()
+
