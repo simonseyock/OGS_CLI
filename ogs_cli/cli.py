@@ -78,30 +78,34 @@ def choose_from_game_options(user, game):
         
 
 def main():
-    colorama.init()
-    print('Press Ctrl+C to quit.')
-    # user, access_token = login()
-    user, access_token = debug_login()
-    if access_token == 0:
-        sys.exit()
+    try:
+        colorama.init()
+        print('Press Ctrl+C to quit.')
+        # user, access_token = login()
+        user, access_token = debug_login()
+        if access_token == 0:
+            print('could not log in to ogs, exiting...')
+            sys.exit()
 
-    while True:
-        # game = choose_game(user, access_token)
-        game_details = get_game_details(user, access_token)
-        print_overview(user, game_details)
-
-        key = choose_option(len(game_details))
-
-        game = game_details[key-1]
-
-        board = get_board_from_sgf(game, access_token)
-        print_board(board)
-    
-        key = choose_from_game_options(user, game)
-        if key == 2:
-            move = make_move(board, user, game)
+        while True:
+            # game = choose_game(user, access_token)
+            game_details = get_game_details(user, access_token)
+            
+            print_overview(user, game_details)
+            
+            key = choose_option(len(game_details))
+            
+            game = game_details[key-1]
+            
+            board = get_board_from_sgf(game, access_token)
             print_board(board)
-        
+            
+            key = choose_from_game_options(user, game)
+            if key == 2:
+                move = make_move(board, user, game)
+                print_board(board)
+    except KeyboardInterrupt:
+        pass
 
 if __name__ == '__main__':
     main()
