@@ -12,13 +12,13 @@ import colorama
 
 with open('secrets.yml', 'r') as stream:
     try:
-        secrets = yaml.load(stream)
+        secrets = yaml.load(stream, Loader=yaml.SafeLoader)
     except yaml.YAMLError as exc:
         print(exc)
 
 with open('config.yml', 'r') as stream:
     try:
-        config = yaml.load(stream)
+        config = yaml.load(stream, Loader=yaml.SafeLoader)
     except yaml.YAMLError as exc:
         print(exc)
 
